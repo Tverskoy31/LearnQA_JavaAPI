@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 public class ParsingJson {
 
     @Test
-    public void testRestAssured() {
+    public void testParsingJson() {
         JsonPath response = RestAssured
                 .given()
                 .get("https://playground.learnqa.ru/api/get_json_homework")
                 .jsonPath();
-        response.prettyPrint();
+        //response.prettyPrint(); для отладки
         String message = response.getString("messages[1].message");
-        System.out.println("\nВторое сообщение:" + message);
+        System.out.println("\nВторое сообщение: " + message);
     }
 }

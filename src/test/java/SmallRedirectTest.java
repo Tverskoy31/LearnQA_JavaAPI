@@ -2,10 +2,10 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-public class RedirectTest {
+public class SmallRedirectTest {
 
     @Test
-    public void testRestAssured() {
+    public void testRedirectSmall() {
         Response response = RestAssured
                 .given()
                 .redirects()
@@ -14,7 +14,6 @@ public class RedirectTest {
                 .get("https://playground.learnqa.ru/api/long_redirect")
                 .andReturn();
 
-        //response.prettyPrint();
         String LocationHeader = response.getHeader("Location");
         System.out.println("\nСсылка куда идёт редирект: " + LocationHeader);
     }
