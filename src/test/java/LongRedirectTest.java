@@ -1,12 +1,10 @@
-package homework;
-
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 public class LongRedirectTest {
 
-    //Задание №7
+
     @Test
     public  void redirectTest(){
         Response response = RestAssured
