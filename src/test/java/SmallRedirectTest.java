@@ -1,9 +1,7 @@
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
-
 public class SmallRedirectTest {
-
     @Test
     public void testRedirectSmall() {
         Response response = RestAssured
