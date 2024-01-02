@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
+
 public class TokenTest {
     @Test
     //Формируем запрос на создание задачи
@@ -33,7 +34,6 @@ public class TokenTest {
 
         // Проверка поля "status"
         assertEquals(responseWithToken.jsonPath().get("status"), "Job is NOT ready");
-
 
         Thread.sleep(delay); //включаем задержку
 
