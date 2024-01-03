@@ -9,6 +9,7 @@ import lib.BaseTestCase;
 import lib.DataGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import io.qameta.allure.*;
 
 import java.util.HashMap;
 import java.util.Map;

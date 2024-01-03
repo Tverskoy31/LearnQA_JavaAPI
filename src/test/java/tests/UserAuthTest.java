@@ -9,12 +9,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import lib.Assertions;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+//allure
+@Epic("Authorization cases")
+@Feature("Authorization")
 
 public class UserAuthTest extends BaseTestCase {
 
@@ -40,6 +48,8 @@ public class UserAuthTest extends BaseTestCase {
     }
 
     @Test
+    @Description ("This test successfully authorize user by email and password")//описание теста
+    @DisplayName("Test positive auth user")//название теста в отчете
     public void testAuthUser() {
         Response responseCheckAuth = RestAssured
                 .given()
@@ -50,7 +60,8 @@ public class UserAuthTest extends BaseTestCase {
         Assertions.asserJsonByName(responseCheckAuth, "user_id", this.userIdOnAuth);
     }
 
-
+    @Description ("This test check authorization status w/o sending auth cookie or token")//описание для отчета Allure
+    @DisplayName("Test negative auth user")
     @ParameterizedTest
     @ValueSource(strings = {"cookie", "headers"})
     public void testNegativeAuthUser(String condition) {

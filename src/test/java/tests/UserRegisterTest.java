@@ -5,17 +5,25 @@ import lib.ApiCoreRequests;
 import lib.Assertions;
 import lib.BaseTestCase;
 import lib.DataGenerator;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.apache.commons.lang3.RandomStringUtils;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Description;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Epic("Registration cases")
+@Feature("Register")
 public class UserRegisterTest extends BaseTestCase {
 
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
+    @Description("Создание пользователя с существующим email")
     @Test //тест на создание юзера с существующим email
     public void testCreateUserWithExistingEmail() {
         String email = "vincotov@example.com";
@@ -45,7 +53,8 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     @Test //с некорректным email - без символа @
-
+    @Description("Testing of registration with an invalid email")
+    @DisplayName("Negative Test creating users with an invalid email")
     public void testCreateUserWrongEmail(){
         String email = "vinkotov.ru";
         Map<String, String> userData = new HashMap<>();
@@ -75,7 +84,8 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     @Test // Создание пользователя с очень коротким именем в один символ
-
+    @Description("Creating a user with a very short name in one character")
+    @DisplayName("The test of positive registration of a user with a name of 1 character")
     public void testCreateUserWithShortName(){
         String firstName = "a";
         Map<String, String> userData = new HashMap<>();
@@ -92,7 +102,8 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     @Test //Создание пользователя с очень длинным именем - длиннее 250 символов
-
+    @Description("Testing registration with userName length more than 250 character")
+    @DisplayName("Test registration with userName length more than 250 character")
     public void testCreateUserWithLongName(){
         String email = DataGenerator.getRandomEmail();
         Map<String,String> userData = DataGenerator.getRegistrationData();
